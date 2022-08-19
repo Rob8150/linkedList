@@ -31,9 +31,24 @@ func (l linkedList) printListData() {
 }
 
 func (l *linkedList) deleteWithValue(value int) {
+	//case linkList has no members
+	if l.length == 0 {
+		return
+	}
+	//case value to delete is the head item
+	if l.head.data == value {
+		l.head = l.head.next
+		l.length--
+		return
+	}
+	//case input value does not exsist inside the list
 
 	previousToDelete := l.head
 	for previousToDelete.next.data != value {
+		//case input value does not exsist inside the list
+		if previousToDelete.next.next == nil {
+			return
+		}
 		previousToDelete = previousToDelete.next
 	}
 	previousToDelete.next = previousToDelete.next.next
@@ -55,7 +70,10 @@ func main() {
 	mylist.prepend(node5)
 	mylist.prepend(node6)
 	mylist.printListData()
-	mylist.deleteWithValue(16)
+	mylist.deleteWithValue(100) //try delete value that does not exist
+	mylist.deleteWithValue(2)   //Try delete the head Should work with out error
 	mylist.printListData()
+	emptyList := linkedList{}
+	emptyList.deleteWithValue(10)
 
 }
