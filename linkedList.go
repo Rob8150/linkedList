@@ -77,12 +77,12 @@ func main() {
 	mylist.printListData()
 	mylist.deleteWithValue("server1209122") //try delete value that does not exist
 	mylist.deleteWithValue("server2390932") //Try delete the head Should work with out error
-	mylist.deleteWithValue("server9034900")
+	mylist.deleteWithValue("server5455252") //Delete normal
 	mylist.printListData()
 	emptyList := linkedList{}
 	emptyList.deleteWithValue("server5398433") //Try to delete from empty list
 	printNode(node5)
-	mylist.prepend(node5)
+	mylist.prepend(node4) //re-prepend server to list after it was deleted
 	fmt.Printf("\n")
 	mylist.printListData()
 }
