@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 type node struct {
-	data int
+	data string
 	next *node
 }
 
@@ -20,17 +20,21 @@ func (l *linkedList) prepend(n *node) {
 
 }
 
+func printNode(n *node) {
+	fmt.Printf("%s ", n)
+}
+
 func (l linkedList) printListData() {
 	toPrint := l.head
 	for l.length != 0 {
-		fmt.Printf("%d ", toPrint.data)
+		fmt.Printf("%s ", toPrint.data)
 		toPrint = toPrint.next
 		l.length--
 	}
 	fmt.Printf("\n")
 }
 
-func (l *linkedList) deleteWithValue(value int) {
+func (l *linkedList) deleteWithValue(value string) {
 	//case linkList has no members
 	if l.length == 0 {
 		return
@@ -57,23 +61,28 @@ func (l *linkedList) deleteWithValue(value int) {
 
 func main() {
 	mylist := linkedList{}
-	node1 := &node{data: 48}
-	node2 := &node{data: 18}
-	node3 := &node{data: 16}
-	node4 := &node{data: 7}
-	node5 := &node{data: 9}
-	node6 := &node{data: 2}
+	node1 := &node{data: "server3434843"}
+	node2 := &node{data: "server3403822"}
+	node3 := &node{data: "server6985855"}
+	node4 := &node{data: "server5455252"}
+	node5 := &node{data: "server9034900"}
+	node6 := &node{data: "server3r67263"}
+	node7 := &node{data: "server2390932"}
 	mylist.prepend(node1)
 	mylist.prepend(node2)
 	mylist.prepend(node3)
 	mylist.prepend(node4)
-	mylist.prepend(node5)
 	mylist.prepend(node6)
+	mylist.prepend(node7)
 	mylist.printListData()
-	mylist.deleteWithValue(100) //try delete value that does not exist
-	mylist.deleteWithValue(2)   //Try delete the head Should work with out error
+	mylist.deleteWithValue("server1209122") //try delete value that does not exist
+	mylist.deleteWithValue("server2390932") //Try delete the head Should work with out error
+	mylist.deleteWithValue("server9034900")
 	mylist.printListData()
 	emptyList := linkedList{}
-	emptyList.deleteWithValue(10)
-
+	emptyList.deleteWithValue("server5398433") //Try to delete from empty list
+	printNode(node5)
+	mylist.prepend(node5)
+	fmt.Printf("\n")
+	mylist.printListData()
 }
