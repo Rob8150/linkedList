@@ -21,7 +21,7 @@ func (l *linkedList) prepend(n *node) {
 }
 
 func printNode(n *node) {
-	fmt.Printf("%s ", n)
+	fmt.Printf("%s ", n.data)
 }
 
 func (l linkedList) printListData() {
