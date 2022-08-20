@@ -35,6 +35,7 @@ func (l linkedList) printListData() {
 }
 
 func (l *linkedList) deleteWithValue(value string) {
+	fmt.Println("Trying to Remove " + value + " from Server list")
 	//case linkList has no members
 	if l.length == 0 {
 		return
@@ -60,7 +61,8 @@ func (l *linkedList) deleteWithValue(value string) {
 }
 
 func main() {
-	mylist := linkedList{}
+	serveUp := linkedList{}
+	serverDown := linkedList{}
 	node1 := &node{data: "server3434843"}
 	node2 := &node{data: "server3403822"}
 	node3 := &node{data: "server6985855"}
@@ -68,21 +70,30 @@ func main() {
 	node5 := &node{data: "server9034900"}
 	node6 := &node{data: "server3r67263"}
 	node7 := &node{data: "server2390932"}
-	mylist.prepend(node1)
-	mylist.prepend(node2)
-	mylist.prepend(node3)
-	mylist.prepend(node4)
-	mylist.prepend(node6)
-	mylist.prepend(node7)
-	mylist.printListData()
-	mylist.deleteWithValue("server1209122") //try delete value that does not exist
-	mylist.deleteWithValue("server2390932") //Try delete the head Should work with out error
-	mylist.deleteWithValue("server5455252") //Delete normal
-	mylist.printListData()
+	serveUp.prepend(node1)
+	serveUp.prepend(node2)
+	serveUp.prepend(node3)
+	serveUp.prepend(node4)
+	serveUp.prepend(node6)
+	serveUp.prepend(node7)
+	serveUp.printListData()
+	serveUp.deleteWithValue("server1209122") //try delete value that does not exist
+	serveUp.deleteWithValue("server2390932") //Try delete the head Should work with out error
+	serveUp.deleteWithValue("server5455252") //Delete normal
+	serverDown.prepend(node4)
+	serverDown.prepend(node7)
+	fmt.Println("Server Up...")
+	serveUp.printListData()
+	fmt.Println("Server Down ...")
+	serverDown.printListData()
 	emptyList := linkedList{}
 	emptyList.deleteWithValue("server5398433") //Try to delete from empty list
 	printNode(node5)
-	mylist.prepend(node4) //re-prepend server to list after it was deleted
+	serveUp.prepend(node4) //re-prepend server to list after it was deleted
+	serverDown.deleteWithValue("server2390932")
 	fmt.Printf("\n")
-	mylist.printListData()
+	fmt.Println("Server Up...")
+	serveUp.printListData()
+	fmt.Println("Server Down...")
+	serverDown.printListData()
 }
